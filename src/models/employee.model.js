@@ -6,9 +6,6 @@ var Employee = function(employee){
   this.last_name      = employee.last_name;
   this.email          = employee.email;
   this.phone          = employee.phone;
-  this.organization   = employee.organization;
-  this.designation    = employee.designation;
-  this.salary         = employee.salary;
   this.status         = employee.status ? employee.status : 1;
   this.created_at     = new Date();
   this.updated_at     = new Date();
@@ -49,7 +46,7 @@ else{
 });
 };
 Employee.update = function(id, employee, result){
-dbConn.query("UPDATE employees SET first_name=?,last_name=?,email=?,phone=?,organization=?,designation=?,salary=? WHERE id = ?", [employee.first_name,employee.last_name,employee.email,employee.phone,employee.organization,employee.designation,employee.salary, id], function (err, res) {
+dbConn.query("UPDATE employees SET first_name=?,last_name=?,email=?,phone=? WHERE id = ?", [employee.first_name,employee.last_name,employee.email,employee.phone, id], function (err, res) {
 if(err) {
   console.log("error: ", err);
   result(null, err);
